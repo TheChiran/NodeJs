@@ -1,0 +1,20 @@
+let Student = require('../models/student.model');
+
+function message(){
+    console.log('Hello world');
+}
+exports.getall = function(req,res){
+    let studentQuery = Student.find();
+    let student = [];
+    studentQuery.exec(function(err,result){
+        if(err) throw err;
+        //console.log('Student 1');
+        //res.send('Student Information');
+        student = result;
+        console.log(student);
+    })
+    message();
+    /* In this non blocking code message() function will not to execute
+    wait for studentQuery to finish execution */
+
+}
